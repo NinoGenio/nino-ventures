@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nino Ventures — IT & Software Consultation</title>
+<meta name="description" content="IT Consultation & Software Development — Building digital products that matter">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: #1A1A1A;
+    background: #FFFFFF;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, .logo { font-family: 'Cormorant Garamond', serif; }
+  a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+  a:hover { opacity: 0.7; }
+
+  /* Navigation */
+  nav {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: 1px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 120px 24px 100px;
+    text-align: center;
+    background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
+  }
+  .hero .tagline {
+    font-size: 14px;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #1A1A1A;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero p {
+    font-size: 18px;
+    color: #6B7280;
+    max-width: 560px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* Divider */
+  .divider {
+    text-align: center;
+    padding: 60px 0;
+    color: #E5E7EB;
+    font-size: 24px;
+    letter-spacing: 12px;
+  }
+
+  /* Services */
+  .services {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-header p {
+    font-size: 16px;
+    color: #6B7280;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+  .service-card {
+    padding: 40px;
+    background: #FAFAFA;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+  .service-card .icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .service-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1A1A1A;
+  }
+  .service-card p {
+    font-size: 15px;
+    color: #6B7280;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .service-card ul {
+    margin-top: 16px;
+    list-style: none;
+  }
+  .service-card ul li {
+    font-size: 14px;
+    color: #555;
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .service-card ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #6B7280;
+  }
+
+  /* Products */
+  .products {
+    padding: 80px 24px;
+    background: #FAFAFA;
+  }
+  .products-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-card.reverse {
+    direction: rtl;
+  }
+  .product-card.reverse > * {
+    direction: ltr;
+  }
+  .product-image {
+    background: linear-gradient(135deg, #F5EFE6 0%, #EDE0D0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    min-height: 400px;
+  }
+  .product-image .placeholder {
+    font-size: 80px;
+    opacity: 0.5;
+  }
+  .product-content {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .product-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #C9A96E;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    width: fit-content;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .product-content h3 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .product-content .tagline {
+    font-size: 16px;
+    color: #6B7280;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .product-content p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .product-content .features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .product-content .features li {
+    font-size: 14px;
+    color: #555;
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+  .product-content .features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #C9A96E;
+    font-weight: 600;
+  }
+  .product-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1A1A;
+    padding: 12px 24px;
+    border: 2px solid #1A1A1A;
+    border-radius: 8px;
+    width: fit-content;
+    transition: all 0.2s;
+  }
+  .product-link:hover {
+    background: #1A1A1A;
+    color: #FFFFFF;
+  }
+
+  /* About */
+  .about {
+    padding: 100px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .about h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .about p {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about .highlight {
+    color: #C9A96E;
+    font-weight: 600;
+  }
+
+  /* Contact */
+  .contact {
+    padding: 80px 24px;
+    background: #1A1A1A;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  .contact h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #FFFFFF;
+  }
+  .contact p {
+    font-size: 16px;
+    color: #9CA3AF;
+    margin-bottom: 40px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .contact-item h4 {
+    font-size: 14px;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .contact-item a, .contact-item span {
+    font-size: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #9CA3AF;
+    background: #111111;
+  }
+  footer a {
+    color: #C9A96E;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    .nav-links { display: none; }
+    .product-card, .product-card.reverse { grid-template-columns: 1fr; }
+    .product-image { min-height: 240px; padding: 40px; }
+    .product-content { padding: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo">Nino Ventures</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="tagline">IT Consultation & Software Development</div>
+  <h1>Building Digital Products That Matter</h1>
+  <p>We help businesses transform ideas into scalable software solutions. From strategy to execution — your trusted technology partner.</p>
+</section>
+
+<div class="divider">— ✦ —</div>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="section-header">
+    <h2>Our Services</h2>
+    <p>End-to-end technology solutions tailored to your business needs</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon">💼</div>
+      <h3>IT Consultation</h3>
+      <p>Strategic technology advisory to align your IT infrastructure with business goals. We help you make informed decisions on tech stack, architecture, and digital transformation.</p>
+      <ul>
+        <li>Technology roadmap planning</li>
+        <li>System architecture review</li>
+        <li>Cloud migration strategy</li>
+        <li>Cost optimization</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🚀</div>
+      <h3>Software Development</h3>
+      <p>Custom software solutions built with modern technologies. From web applications to mobile apps, we deliver production-ready code that scales.</p>
+      <ul>
+        <li>Web & mobile applications</li>
+        <li>API development & integration</li>
+        <li>Database design & optimization</li>
+        <li>Third-party integrations</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🤖</div>
+      <h3>AI Integration</h3>
+      <p>Harness the power of artificial intelligence to automate workflows, enhance customer experience, and drive business efficiency.</p>
+      <ul>
+        <li>Conversational AI (chatbots)</li>
+        <li>Process automation</li>
+        <li>LLM integration</li>
+        <li>Custom AI solutions</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">📊</div>
+      <h3>Product Strategy</h3>
+      <p>From MVP to scale — we help you define, build, and iterate your digital product with user-centric design and agile methodology.</p>
+      <ul>
+        <li>MVP development</li>
+        <li>Product roadmap</li>
+        <li>User research & validation</li>
+        <li>Growth strategy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider">— ✦ —</div>
+
+<!-- Products -->
+<section class="products" id="products">
+  <div class="products-container">
+    <div class="section-header">
+      <h2>Our Products</h2>
+      <p>Software products built in-house, solving real business problems</p>
+    </div>
+
+    <!-- HaiNaya Product Card -->
+    <div class="product-card">
+      <div class="product-image">
+        <div class="placeholder">🎉</div>
+      </div>
+      <div class="product-content">
+        <span class="product-badge">Flagship Product</span>
+        <h3>HaiNaya.id</h3>
+        <p class="tagline">AI Customer Service for Indonesian Wedding Vendors</p>
+        <p>HaiNaya (Naya) is a WhatsApp-based AI assistant that helps wedding vendors respond to customer inquiries 24/7. Built specifically for the Indonesian wedding industry — WO, photographers, MUAs, venues, and caterers.</p>
+        <ul class="features">
+          <li>Automated WhatsApp responses 24/7</li>
+          <li>AI-powered lead qualification</li>
+          <li>Seamless human handoff</li>
+          <li>Multi-tenant SaaS architecture</li>
+          <li>Integrated with Meta WABA</li>
+          <li>Built with FastAPI + Next.js</li>
+        </ul>
+        <a href="https://hainaya.id" class="product-link" target="_blank">Visit HaiNaya.id →</a>
+      </div>
+    </div>
+
+    <!-- Jangkau Product Card -->
+    <div class="product-card reverse">
+      <div class="product-image">
+        <div class="placeholder">📢</div>
+      </div>
+      <div class="product-content">
+        <span class="product-badge">Coming Soon</span>
+        <h3>Jangkau</h3>
+        <p class="tagline">AI-Powered Outreach Automation</p>
+        <p>Jangkau automates customer outreach with intelligent template messaging. Replace manual WhatsApp outreach with AI-driven campaigns that comply with Meta policies and convert better.</p>
+        <ul class="features">
+          <li>Template-based outreach (Meta-compliant)</li>
+          <li>AI-powered message personalization</li>
+          <li>Lead scoring & qualification</li>
+          <li>Campaign analytics dashboard</li>
+          <li>Smart follow-up automation</li>
+          <li>Integration with HaiNaya CRM</li>
+        </ul>
+        <a href="#" class="product-link" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Launch Soon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">— ✦ —</div>
+
+<!-- About -->
+<section class="about" id="about">
+  <h2>About Nino Ventures</h2>
+  <p>Founded by <span class="highlight">Gentra</span>, Nino Ventures is a technology consultancy and product studio based in Jakarta, Indonesia.</p>
+  <p>We believe in building software that <span class="highlight">solves real problems</span> — not just chasing trends. Our approach combines deep technical expertise with business acumen to deliver solutions that drive measurable impact.</p>
+  <p>With experience in <span class="highlight">e-commerce, SaaS, and AI</span>, we've helped businesses from startups to enterprises transform their digital presence and operations.</p>
+  <p style="margin-top: 32px; font-style: italic; color: #6B7280;">"Technology should serve business goals, not the other way around."</p>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <h2>Let's Build Something Great</h2>
+  <p>Ready to transform your ideas into reality? Let's talk.</p>
+  
+  <div class="contact-grid">
+    <div class="contact-item">
+      <h4>Email</h4>
+      <a href="mailto:hello@ninoventures.com">hello@ninoventures.com</a>
+    </div>
+    <div class="contact-item">
+      <h4>Location</h4>
+      <span>Jakarta, Indonesia</span>
+    </div>
+    <div class="contact-item">
+      <h4>GitHub</h4>
+      <a href="https://github.com/gentra" target="_blank">@gentra</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2025 Nino Ventures. All rights reserved.<br>
+  Built with ❤️ in Jakarta
+</footer>
+
+</body>
+</html>
