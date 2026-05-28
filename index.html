@@ -3,540 +3,1359 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nino Ventures — IT & Software Consultation</title>
-<meta name="description" content="IT Consultation & Software Development — Building digital products that matter">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Nino Ventures - Digital Product Studio</title>
+<meta name="description" content="Nino Ventures is a Jakarta-based technology consultancy and product studio for strategy, software development, AI integration, and digital products.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    color-scheme: light dark;
+    --black: #050507;
+    --ink: #111114;
+    --muted: #6b7280;
+    --line: rgba(17, 17, 20, 0.12);
+    --line-dark: rgba(255, 255, 255, 0.14);
+    --white: #ffffff;
+    --soft: #f5f5f7;
+    --panel: rgba(255, 255, 255, 0.08);
+    --panel-strong: rgba(255, 255, 255, 0.14);
+    --blue: #6eb7ff;
+    --violet: #a994ff;
+    --green: #51d88a;
+    --radius: 28px;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    font-family: 'DM Sans', sans-serif;
-    color: #1A1A1A;
-    background: #FFFFFF;
-    font-weight: 400;
-    line-height: 1.6;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.45;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, .logo { font-family: 'Cormorant Garamond', serif; }
-  a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
-  a:hover { opacity: 0.7; }
 
-  /* Navigation */
-  nav {
-    padding: 20px 24px;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-header {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(5, 5, 7, 0.92);
+    backdrop-filter: blur(28px);
+  }
+
+  .nav {
+    width: min(1180px, calc(100% - 40px));
+    height: 72px;
+    margin: 0 auto;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1A1A1A;
-    letter-spacing: 1px;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-  }
-  .nav-links a {
-    font-size: 14px;
-    color: #555;
-    font-weight: 500;
+    color: var(--white);
   }
 
-  /* Hero */
-  .hero {
-    padding: 120px 24px 100px;
-    text-align: center;
-    background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
-  }
-  .hero .tagline {
-    font-size: 14px;
-    color: #6B7280;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-  .hero h1 {
-    font-size: 48px;
-    line-height: 1.2;
-    font-weight: 600;
-    margin-bottom: 24px;
-    color: #1A1A1A;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero p {
-    font-size: 18px;
-    color: #6B7280;
-    max-width: 560px;
-    margin: 0 auto;
-    font-weight: 300;
-  }
-
-  /* Divider */
-  .divider {
-    text-align: center;
-    padding: 60px 0;
-    color: #E5E7EB;
-    font-size: 24px;
-    letter-spacing: 12px;
-  }
-
-  /* Services */
-  .services {
-    padding: 80px 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .section-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  .section-header h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .section-header p {
-    font-size: 16px;
-    color: #6B7280;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 32px;
-  }
-  .service-card {
-    padding: 40px;
-    background: #FAFAFA;
-    border-radius: 12px;
-    border: 1px solid #E5E7EB;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-  }
-  .service-card .icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .service-card h3 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #1A1A1A;
-  }
-  .service-card p {
-    font-size: 15px;
-    color: #6B7280;
-    line-height: 1.7;
-    font-weight: 300;
-  }
-  .service-card ul {
-    margin-top: 16px;
-    list-style: none;
-  }
-  .service-card ul li {
-    font-size: 14px;
-    color: #555;
-    padding: 6px 0;
-    padding-left: 20px;
-    position: relative;
-  }
-  .service-card ul li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #6B7280;
-  }
-
-  /* Products */
-  .products {
-    padding: 80px 24px;
-    background: #FAFAFA;
-  }
-  .products-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .product-card {
-    background: #FFFFFF;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    margin-bottom: 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .product-card.reverse {
-    direction: rtl;
-  }
-  .product-card.reverse > * {
-    direction: ltr;
-  }
-  .product-image {
-    background: linear-gradient(135deg, #F5EFE6 0%, #EDE0D0 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px;
-    min-height: 400px;
-  }
-  .product-image .placeholder {
-    font-size: 80px;
-    opacity: 0.5;
-  }
-  .product-content {
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .product-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    background: #C9A96E;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: 600;
-    border-radius: 20px;
-    width: fit-content;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .product-content h3 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .product-content .tagline {
-    font-size: 16px;
-    color: #6B7280;
-    margin-bottom: 20px;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-  }
-  .product-content p {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-  .product-content .features {
-    list-style: none;
-    margin-bottom: 32px;
-  }
-  .product-content .features li {
-    font-size: 14px;
-    color: #555;
-    padding: 8px 0;
-    padding-left: 24px;
-    position: relative;
-  }
-  .product-content .features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #C9A96E;
-    font-weight: 600;
-  }
-  .product-link {
+  .brand {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #1A1A1A;
-    padding: 12px 24px;
-    border: 2px solid #1A1A1A;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.42);
     border-radius: 8px;
-    width: fit-content;
-    transition: all 0.2s;
-  }
-  .product-link:hover {
-    background: #1A1A1A;
-    color: #FFFFFF;
+    font-weight: 800;
+    letter-spacing: 0;
   }
 
-  /* About */
-  .about {
-    padding: 100px 24px;
-    max-width: 800px;
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .nav-links a:hover,
+  .footer a:hover {
+    color: var(--white);
+  }
+
+  .nav-cta,
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 650;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  }
+
+  .nav-cta:hover,
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .hero {
+    min-height: 100svh;
+    position: relative;
+    overflow: hidden;
+    padding: 140px 0 52px;
+    color: var(--white);
+    background:
+      linear-gradient(90deg, rgba(5, 5, 7, 0.98) 0%, rgba(5, 5, 7, 0.9) 28%, rgba(5, 5, 7, 0.42) 72%, rgba(5, 5, 7, 0.78) 100%),
+      url("assets/hero-horizon.png") center bottom / cover no-repeat,
+      var(--black);
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 180px;
+    background: linear-gradient(180deg, rgba(5, 5, 7, 0), var(--black));
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    width: min(1180px, calc(100% - 40px));
+    min-height: calc(100svh - 192px);
     margin: 0 auto;
-    text-align: center;
-  }
-  .about h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  .about p {
-    font-size: 17px;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-  .about .highlight {
-    color: #C9A96E;
-    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(360px, 0.96fr) minmax(460px, 1.04fr);
+    align-items: center;
+    gap: 44px;
   }
 
-  /* Contact */
+  .hero-copy h1 {
+    margin: 0;
+    max-width: 650px;
+    font-size: clamp(56px, 6vw, 88px);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+    font-weight: 760;
+  }
+
+  .gradient-text {
+    color: transparent;
+    background: linear-gradient(92deg, #ffffff 8%, #83c8ff 44%, #b6a5ff 82%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .hero-copy p {
+    max-width: 530px;
+    margin: 28px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.48;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+  }
+
+  .button.primary {
+    background: var(--white);
+    color: #060608;
+    border-color: var(--white);
+    box-shadow: 0 18px 44px rgba(255, 255, 255, 0.18);
+  }
+
+  .button.secondary {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .proof-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 16px;
+    margin-top: 66px;
+    max-width: 690px;
+  }
+
+  .proof {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .proof svg {
+    width: 22px;
+    height: 22px;
+    color: var(--blue);
+    flex: 0 0 auto;
+  }
+
+  .command-wrap {
+    perspective: 1200px;
+  }
+
+  .command-panel {
+    position: relative;
+    min-height: 520px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 34px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04)),
+      rgba(10, 16, 25, 0.76);
+    box-shadow: 0 36px 100px rgba(46, 118, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(24px);
+    transform: rotateY(-10deg) rotateX(5deg) rotateZ(-2deg);
+  }
+
+  .command-panel::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(130deg, rgba(110, 183, 255, 0.75), transparent 32%, rgba(169, 148, 255, 0.75));
+    opacity: 0.38;
+    z-index: -1;
+  }
+
+  .panel-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+
+  .panel-title h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+
+  .panel-title p {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 14px;
+  }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.72fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .glass-card {
+    padding: 18px;
+    min-height: 315px;
+    border: 1px solid var(--line-dark);
+    border-radius: 24px;
+    background: rgba(2, 8, 16, 0.45);
+  }
+
+  .glass-card h3,
+  .metric-card h3 {
+    margin: 0;
+    color: var(--white);
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .glass-card small,
+  .metric-card small {
+    display: block;
+    margin-top: 3px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+  }
+
+  .status {
+    display: inline-flex;
+    float: right;
+    align-items: center;
+    min-height: 24px;
+    padding: 0 9px;
+    border-radius: 999px;
+    color: #0d2c19;
+    background: var(--green);
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .message {
+    margin-top: 22px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+  }
+
+  .message.reply {
+    margin-left: 26px;
+    background: rgba(58, 220, 127, 0.18);
+  }
+
+  .mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .mini-stat {
+    padding-top: 16px;
+    border-top: 1px solid var(--line-dark);
+  }
+
+  .mini-stat strong {
+    display: block;
+    color: var(--white);
+    font-size: 24px;
+    letter-spacing: -0.04em;
+  }
+
+  .pipeline {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .pipeline-step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+  }
+
+  .dot-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(110, 183, 255, 0.16);
+    color: var(--blue);
+  }
+
+  .metric-column {
+    display: grid;
+    gap: 16px;
+  }
+
+  .metric-card {
+    padding: 18px;
+    border: 1px solid var(--line-dark);
+    border-radius: 24px;
+    background: rgba(2, 8, 16, 0.45);
+  }
+
+  .ring {
+    width: 118px;
+    height: 118px;
+    display: grid;
+    place-items: center;
+    margin: 18px auto;
+    border-radius: 50%;
+    background: conic-gradient(var(--green) 0 88%, rgba(255,255,255,0.12) 88% 100%);
+    position: relative;
+    color: var(--white);
+    font-weight: 800;
+    font-size: 24px;
+  }
+
+  .ring::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    background: #101722;
+  }
+
+  .ring span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .integration-list {
+    display: grid;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 108px 0;
+  }
+
+  .section-inner {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 0.72fr);
+    align-items: end;
+    gap: 54px;
+    margin-bottom: 66px;
+  }
+
+  .section-label {
+    margin: 0 0 18px;
+    color: #1f6feb;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .section-heading h2,
+  .about-copy h2,
+  .contact-card h2 {
+    margin: 0;
+    font-size: clamp(42px, 5vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    font-weight: 760;
+  }
+
+  .section-heading p,
+  .about-copy p,
+  .contact-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+  }
+
+  .capability-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+  }
+
+  .capability {
+    padding: 34px 30px 10px 0;
+    min-height: 310px;
+    border-right: 1px solid var(--line);
+  }
+
+  .capability:last-child {
+    border-right: 0;
+  }
+
+  .capability-icon,
+  .about-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    color: var(--white);
+    background: linear-gradient(145deg, #0d111a, #252a39);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  .capability h3 {
+    margin: 28px 0 10px;
+    font-size: 22px;
+    letter-spacing: -0.035em;
+  }
+
+  .capability p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .clean-list {
+    padding: 0;
+    margin: 20px 0 0;
+    list-style: none;
+    color: #404651;
+    font-size: 14px;
+  }
+
+  .clean-list li {
+    padding: 6px 0;
+  }
+
+  .clean-list li::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0 10px 2px 0;
+    border-radius: 50%;
+    background: #1f6feb;
+  }
+
+  .dark-section {
+    color: var(--white);
+    background:
+      radial-gradient(circle at 20% 8%, rgba(34, 124, 255, 0.18), transparent 34%),
+      radial-gradient(circle at 86% 16%, rgba(169, 148, 255, 0.2), transparent 34%),
+      linear-gradient(180deg, #050507, #090d14 58%, #050507);
+  }
+
+  .dark-section .section-heading p {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .product-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .product-card {
+    overflow: hidden;
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 0.98fr 1.02fr;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+    box-shadow: var(--shadow);
+  }
+
+  .product-copy {
+    padding: 42px;
+  }
+
+  .product-copy .label {
+    color: #7ee7ae;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .product-card:nth-child(2) .label {
+    color: #87bfff;
+  }
+
+  .product-copy h3 {
+    margin: 18px 0 8px;
+    font-size: 42px;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+  }
+
+  .product-copy .subline {
+    margin: 0 0 20px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .product-copy p {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 15px;
+  }
+
+  .feature-list {
+    display: grid;
+    gap: 9px;
+    padding: 0;
+    margin: 24px 0 30px;
+    list-style: none;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14px;
+  }
+
+  .feature-list li::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 16px rgba(81, 216, 138, 0.7);
+  }
+
+  .product-card:nth-child(2) .feature-list li::before {
+    background: var(--blue);
+    box-shadow: 0 0 16px rgba(110, 183, 255, 0.72);
+  }
+
+  .product-visual {
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    background:
+      radial-gradient(circle at 50% 10%, rgba(255,255,255,0.18), transparent 28%),
+      linear-gradient(150deg, rgba(81, 216, 138, 0.16), rgba(4, 7, 12, 0.42));
+  }
+
+  .product-card:nth-child(2) .product-visual {
+    background:
+      radial-gradient(circle at 50% 10%, rgba(255,255,255,0.18), transparent 28%),
+      linear-gradient(150deg, rgba(110, 183, 255, 0.18), rgba(169, 148, 255, 0.24));
+  }
+
+  .phone-mock {
+    position: absolute;
+    width: 260px;
+    left: 50%;
+    bottom: -34px;
+    transform: translateX(-50%) rotate(-5deg);
+    padding: 14px;
+    border-radius: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: #0a1017;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+  }
+
+  .phone-screen {
+    min-height: 410px;
+    padding: 18px;
+    border-radius: 26px;
+    background: linear-gradient(180deg, #14211e, #091016);
+    color: var(--white);
+  }
+
+  .avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--green);
+    color: #0a2415;
+    font-weight: 800;
+  }
+
+  .chat-bubble {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 16px 16px 16px 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+  }
+
+  .chat-bubble.sent {
+    margin-left: 28px;
+    border-radius: 16px 16px 4px 16px;
+    background: rgba(81, 216, 138, 0.22);
+  }
+
+  .lead-score {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .score-box {
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .score-box strong {
+    display: block;
+    color: #75ffab;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .dashboard-mock {
+    position: absolute;
+    width: min(250px, calc(100% - 36px));
+    right: 18px;
+    bottom: 42px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    background: rgba(6, 10, 18, 0.8);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+  }
+
+  .bar-chart {
+    height: 110px;
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    margin-top: 26px;
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .bar {
+    flex: 1;
+    min-width: 0;
+    border-radius: 8px 8px 4px 4px;
+    background: linear-gradient(180deg, var(--blue), rgba(110, 183, 255, 0.18));
+  }
+
+  .campaign-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+  }
+
+  .about {
+    background: var(--white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.86fr 1.14fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .about-copy p {
+    margin-top: 24px;
+    max-width: 560px;
+  }
+
+  .signature {
+    margin-top: 30px;
+    color: var(--ink);
+    font-weight: 650;
+  }
+
+  .about-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-left: 1px solid var(--line);
+  }
+
+  .about-point {
+    min-height: 172px;
+    padding: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-point:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+
+  .about-point h3 {
+    margin: 18px 0 7px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .about-point p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
   .contact {
-    padding: 80px 24px;
-    background: #1A1A1A;
-    color: #FFFFFF;
-    text-align: center;
+    padding: 0 0 86px;
+    background: var(--white);
   }
-  .contact h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #FFFFFF;
+
+  .contact-card {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 0.74fr 1.26fr;
+    border-radius: 26px;
+    background:
+      radial-gradient(circle at 22% 82%, rgba(169, 148, 255, 0.6), transparent 26%),
+      radial-gradient(circle at 44% 112%, rgba(110, 183, 255, 0.42), transparent 35%),
+      #070910;
+    color: var(--white);
+    box-shadow: var(--shadow);
   }
-  .contact p {
-    font-size: 16px;
-    color: #9CA3AF;
-    margin-bottom: 40px;
+
+  .contact-copy {
+    padding: 44px;
   }
+
+  .contact-card p {
+    color: rgba(255, 255, 255, 0.66);
+    margin-top: 14px;
+  }
+
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    max-width: 800px;
+    grid-template-columns: 1.35fr 0.95fr 1.25fr 0.8fr;
+    border-left: 1px solid var(--line-dark);
+  }
+
+  .contact-item {
+    padding: 44px 28px;
+    border-left: 1px solid var(--line-dark);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+  }
+
+  .contact-item:first-child {
+    border-left: 0;
+  }
+
+  .contact-item h3 {
+    margin: 0 0 14px;
+    color: var(--white);
+    font-size: 15px;
+  }
+
+  .contact-item a {
+    white-space: nowrap;
+  }
+
+  .footer {
+    color: rgba(255, 255, 255, 0.58);
+    background: #050507;
+    font-size: 12px;
+  }
+
+  .footer-inner {
+    width: min(1180px, calc(100% - 40px));
+    min-height: 82px;
     margin: 0 auto;
-  }
-  .contact-item h4 {
-    font-size: 14px;
-    color: #9CA3AF;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .contact-item a, .contact-item span {
-    font-size: 18px;
-    color: #FFFFFF;
-    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
   }
 
-  /* Footer */
-  footer {
-    padding: 40px 24px;
-    text-align: center;
-    font-size: 14px;
-    color: #9CA3AF;
-    background: #111111;
-  }
-  footer a {
-    color: #C9A96E;
+  .footer strong {
+    color: rgba(255, 255, 255, 0.82);
   }
 
-  /* Mobile */
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 36px; }
-    .hero p { font-size: 16px; }
-    .nav-links { display: none; }
-    .product-card, .product-card.reverse { grid-template-columns: 1fr; }
-    .product-image { min-height: 240px; padding: 40px; }
-    .product-content { padding: 40px; }
-    .services-grid { grid-template-columns: 1fr; }
+  svg {
+    display: block;
+  }
+
+  @media (max-width: 1080px) {
+    .hero-inner,
+    .section-heading,
+    .about-grid,
+    .contact-card {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-inner {
+      padding-top: 48px;
+    }
+
+    .command-panel {
+      transform: none;
+    }
+
+    .capability-grid,
+    .product-showcase,
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-grid {
+      border-top: 1px solid var(--line-dark);
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .nav {
+      width: min(100% - 28px, 1180px);
+      height: 64px;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .brand {
+      font-size: 12px;
+    }
+
+    .hero {
+      padding-top: 96px;
+    }
+
+    .hero-inner,
+    .section-inner,
+    .contact-card,
+    .footer-inner {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(52px, 15vw, 74px);
+    }
+
+    .proof-row,
+    .panel-grid,
+    .capability-grid,
+    .product-showcase,
+    .about-points,
+    .contact-grid,
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .proof-row {
+      gap: 10px;
+      margin-top: 42px;
+    }
+
+    .command-panel {
+      min-height: auto;
+      padding: 18px;
+      border-radius: 26px;
+    }
+
+    .metric-column {
+      grid-template-columns: 1fr;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      gap: 18px;
+      margin-bottom: 38px;
+    }
+
+    .capability {
+      min-height: auto;
+      padding: 30px 0;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .product-card {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .product-copy {
+      padding: 30px;
+    }
+
+    .product-visual {
+      min-height: 420px;
+      order: 2;
+    }
+
+    .dashboard-mock {
+      left: 24px;
+      right: 24px;
+      width: auto;
+    }
+
+    .about-points {
+      border-left: 0;
+    }
+
+    .about-point,
+    .about-point:nth-child(odd) {
+      border-right: 0;
+      padding: 24px 0;
+    }
+
+    .contact-copy,
+    .contact-item {
+      padding: 30px;
+    }
+
+    .contact-item {
+      border-left: 0;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .footer-inner {
+      display: grid;
+      padding: 24px 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .command-panel,
+    .product-card,
+    .capability {
+      animation: rise 700ms ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        translate: 0 18px;
+      }
+      to {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
   }
 </style>
 </head>
 <body>
-
-<!-- Navigation -->
-<nav>
-  <div class="logo">Nino Ventures</div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-  <div class="tagline">IT Consultation & Software Development</div>
-  <h1>Building Digital Products That Matter</h1>
-  <p>We help businesses transform ideas into scalable software solutions. From strategy to execution — your trusted technology partner.</p>
-</section>
-
-<div class="divider">— ✦ —</div>
-
-<!-- Services -->
-<section class="services" id="services">
-  <div class="section-header">
-    <h2>Our Services</h2>
-    <p>End-to-end technology solutions tailored to your business needs</p>
-  </div>
-
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="icon">💼</div>
-      <h3>IT Consultation</h3>
-      <p>Strategic technology advisory to align your IT infrastructure with business goals. We help you make informed decisions on tech stack, architecture, and digital transformation.</p>
-      <ul>
-        <li>Technology roadmap planning</li>
-        <li>System architecture review</li>
-        <li>Cloud migration strategy</li>
-        <li>Cost optimization</li>
-      </ul>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#top" aria-label="Nino Ventures home">
+      <span class="brand-mark">N</span>
+      <span>Nino Ventures</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
+    <a class="nav-cta" href="mailto:contact@ninoventures.com">Start a project</a>
+  </nav>
+</header>
 
-    <div class="service-card">
-      <div class="icon">🚀</div>
-      <h3>Software Development</h3>
-      <p>Custom software solutions built with modern technologies. From web applications to mobile apps, we deliver production-ready code that scales.</p>
-      <ul>
-        <li>Web & mobile applications</li>
-        <li>API development & integration</li>
-        <li>Database design & optimization</li>
-        <li>Third-party integrations</li>
-      </ul>
-    </div>
-
-    <div class="service-card">
-      <div class="icon">🤖</div>
-      <h3>AI Integration</h3>
-      <p>Harness the power of artificial intelligence to automate workflows, enhance customer experience, and drive business efficiency.</p>
-      <ul>
-        <li>Conversational AI (chatbots)</li>
-        <li>Process automation</li>
-        <li>LLM integration</li>
-        <li>Custom AI solutions</li>
-      </ul>
-    </div>
-
-    <div class="service-card">
-      <div class="icon">📊</div>
-      <h3>Product Strategy</h3>
-      <p>From MVP to scale — we help you define, build, and iterate your digital product with user-centric design and agile methodology.</p>
-      <ul>
-        <li>MVP development</li>
-        <li>Product roadmap</li>
-        <li>User research & validation</li>
-        <li>Growth strategy</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="divider">— ✦ —</div>
-
-<!-- Products -->
-<section class="products" id="products">
-  <div class="products-container">
-    <div class="section-header">
-      <h2>Our Products</h2>
-      <p>Software products built in-house, solving real business problems</p>
-    </div>
-
-    <!-- HaiNaya Product Card -->
-    <div class="product-card">
-      <div class="product-image">
-        <div class="placeholder">🎉</div>
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1 id="hero-title">Digital products, built with <span class="gradient-text">taste and precision.</span></h1>
+        <p>We partner with businesses to turn ideas into scalable software and AI systems that create real impact. From strategy to execution, we are with you all the way.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="mailto:contact@ninoventures.com">Start a project&nbsp; -></a>
+          <a class="button secondary" href="#products">See products</a>
+        </div>
+        <div class="proof-row" aria-label="Core capabilities">
+          <div class="proof">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 15.5V8.7L12 5l6 3.7v6.8L12 19l-6-3.5Z" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v8M8.5 10.2l7 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <span>Strategy<br>that aligns</span>
+          </div>
+          <div class="proof">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Engineering<br>that ships</span>
+          </div>
+          <div class="proof">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14M7.5 7.5l9 9M16.5 7.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>AI systems<br>that scale</span>
+          </div>
+          <div class="proof">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6h12v12H6z" stroke="currentColor" stroke-width="1.7"/><path d="M9 10h6M9 14h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <span>Products<br>that grow</span>
+          </div>
+        </div>
       </div>
-      <div class="product-content">
-        <span class="product-badge">Flagship Product</span>
-        <h3>HaiNaya.id</h3>
-        <p class="tagline">AI Customer Service for Indonesian Wedding Vendors</p>
-        <p>HaiNaya (Naya) is a WhatsApp-based AI assistant that helps wedding vendors respond to customer inquiries 24/7. Built specifically for the Indonesian wedding industry — WO, photographers, MUAs, venues, and caterers.</p>
-        <ul class="features">
-          <li>Automated WhatsApp responses 24/7</li>
-          <li>AI-powered lead qualification</li>
-          <li>Seamless human handoff</li>
-          <li>Multi-tenant SaaS architecture</li>
-          <li>Integrated with Meta WABA</li>
-          <li>Built with FastAPI + Next.js</li>
-        </ul>
-        <a href="https://hainaya.id" class="product-link" target="_blank">Visit HaiNaya.id →</a>
+
+      <div class="command-wrap" aria-label="AI operations command center visual">
+        <div class="command-panel">
+          <div class="panel-top">
+            <span>Nino Ventures</span>
+            <span>Operational</span>
+          </div>
+          <div class="panel-title">
+            <h2>Command Center</h2>
+            <p>AI-powered product operations</p>
+          </div>
+          <div class="panel-grid">
+            <div class="glass-card">
+              <span class="status">Live</span>
+              <h3>HaiNaya</h3>
+              <small>AI Customer Service</small>
+              <div class="message">Hi! I'm Naya. How can I help you with your wedding plan today?</div>
+              <div class="message reply">I'm looking for a wedding photography package.</div>
+              <div class="mini-stats">
+                <div class="mini-stat"><small>Conversations</small><strong>24.7K</strong></div>
+                <div class="mini-stat"><small>Response rate</small><strong>98%</strong></div>
+              </div>
+            </div>
+            <div class="glass-card">
+              <h3>Jangkau</h3>
+              <small>Outreach Automation</small>
+              <div class="pipeline">
+                <div class="pipeline-step"><span class="dot-icon">1</span><span>Audience<br><small>5,250 leads</small></span></div>
+                <div class="pipeline-step"><span class="dot-icon">2</span><span>AI personalization<br><small>Generating messages</small></span></div>
+                <div class="pipeline-step"><span class="dot-icon">3</span><span>Send via WhatsApp<br><small>1,482 sent</small></span></div>
+                <div class="pipeline-step"><span class="dot-icon">4</span><span>Replies<br><small>426 qualified</small></span></div>
+              </div>
+            </div>
+            <div class="metric-column">
+              <div class="metric-card">
+                <h3>System Health</h3>
+                <div class="ring"><span>99%</span></div>
+                <small>All systems operational</small>
+              </div>
+              <div class="metric-card">
+                <h3>Integrations</h3>
+                <div class="integration-list">
+                  <span>WhatsApp Business</span>
+                  <span>Cloud systems</span>
+                  <span>Data layer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Jangkau Product Card -->
-    <div class="product-card reverse">
-      <div class="product-image">
-        <div class="placeholder">📢</div>
+  <section class="section" id="services">
+    <div class="section-inner">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Capabilities</p>
+          <h2>End-to-end technology solutions that drive results.</h2>
+        </div>
+        <p>We combine deep technical expertise with business understanding to deliver software that solves real problems. No fluff. Just meaningful technology.</p>
       </div>
-      <div class="product-content">
-        <span class="product-badge">Coming Soon</span>
-        <h3>Jangkau</h3>
-        <p class="tagline">AI-Powered Outreach Automation</p>
-        <p>Jangkau automates customer outreach with intelligent template messaging. Replace manual WhatsApp outreach with AI-driven campaigns that comply with Meta policies and convert better.</p>
-        <ul class="features">
-          <li>Template-based outreach (Meta-compliant)</li>
-          <li>AI-powered message personalization</li>
-          <li>Lead scoring & qualification</li>
-          <li>Campaign analytics dashboard</li>
-          <li>Smart follow-up automation</li>
-          <li>Integration with HaiNaya CRM</li>
-        </ul>
-        <a href="#" class="product-link" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Launch Soon</a>
+
+      <div class="capability-grid">
+        <article class="capability">
+          <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 9V7.5A2.5 2.5 0 0 1 9.5 5h5A2.5 2.5 0 0 1 17 7.5V9" stroke="currentColor" stroke-width="1.7"/><path d="M5 9h14v9H5z" stroke="currentColor" stroke-width="1.7"/><path d="M9 13h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <h3>IT Consultation</h3>
+          <p>Strategic advisory to align your technology, infrastructure, and decisions with business goals.</p>
+          <ul class="clean-list">
+            <li>Technology roadmap</li>
+            <li>Architecture review</li>
+            <li>Cloud strategy</li>
+            <li>Cost optimization</li>
+          </ul>
+        </article>
+        <article class="capability">
+          <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Software Development</h3>
+          <p>Custom software built with modern stacks, clean architecture, and scalable design.</p>
+          <ul class="clean-list">
+            <li>Web and mobile apps</li>
+            <li>API development</li>
+            <li>Database design</li>
+            <li>System integrations</li>
+          </ul>
+        </article>
+        <article class="capability">
+          <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <h3>AI Integration</h3>
+          <p>Practical AI that automates workflows, improves customer experience, and drives efficiency.</p>
+          <ul class="clean-list">
+            <li>Conversational AI</li>
+            <li>Process automation</li>
+            <li>LLM integration</li>
+            <li>Custom AI solutions</li>
+          </ul>
+        </article>
+        <article class="capability">
+          <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 17 10 12l3 3 6-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h4v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Product Strategy</h3>
+          <p>From idea to scale, we help validate, build, and grow digital products users love.</p>
+          <ul class="clean-list">
+            <li>MVP development</li>
+            <li>Product roadmap</li>
+            <li>User research</li>
+            <li>Growth strategy</li>
+          </ul>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider">— ✦ —</div>
+  <section class="section dark-section" id="products">
+    <div class="section-inner">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Our products</p>
+          <h2>Products we build to solve real problems.</h2>
+        </div>
+        <p>In-house products designed for Indonesian businesses, combining AI, WhatsApp workflows, and production-grade software.</p>
+      </div>
 
-<!-- About -->
-<section class="about" id="about">
-  <h2>About Nino Ventures</h2>
-  <p>Founded by <a href="https://www.linkedin.com/in/gentra/" target="_blank" class="highlight">Gentra</a>, Nino Ventures is a technology consultancy and product studio based in Jakarta, Indonesia.</p>
-  <p>We believe in building software that <span class="highlight">solves real problems</span> — not just chasing trends. Our approach combines deep technical expertise with business acumen to deliver solutions that drive measurable impact.</p>
-  <p>With experience in <span class="highlight">e-commerce, SaaS, and AI</span>, we've helped businesses from startups to enterprises transform their digital presence and operations.</p>
-  <p style="margin-top: 32px; font-style: italic; color: #6B7280;">"Technology should serve business goals, not the other way around."</p>
-</section>
+      <div class="product-showcase">
+        <article class="product-card">
+          <div class="product-copy">
+            <span class="label">HaiNaya</span>
+            <h3>HaiNaya.id</h3>
+            <p class="subline">AI Customer Service for Indonesian Wedding Vendors</p>
+            <p>HaiNaya is a WhatsApp-based AI assistant that helps wedding vendors respond to customer inquiries 24/7, qualify leads, and hand off to humans gracefully.</p>
+            <ul class="feature-list">
+              <li>Automated WhatsApp responses 24/7</li>
+              <li>AI-powered lead qualification</li>
+              <li>Seamless human handoff</li>
+              <li>Multi-tenant SaaS architecture</li>
+              <li>Integrated with Meta WABA</li>
+            </ul>
+            <a class="button primary" href="https://hainaya.id" target="_blank" rel="noreferrer">Explore HaiNaya.id&nbsp; -></a>
+          </div>
+          <div class="product-visual" aria-hidden="true">
+            <div class="phone-mock">
+              <div class="phone-screen">
+                <div class="avatar-row">
+                  <span class="avatar">N</span>
+                  <div><strong>Naya AI</strong><br><small>Online now</small></div>
+                </div>
+                <div class="chat-bubble">Hi! I'm Naya. How can I help you today?</div>
+                <div class="chat-bubble sent">I'm looking for a wedding photography package.</div>
+                <div class="chat-bubble">Great. I can help you find the perfect package. Could you tell me your wedding date?</div>
+                <div class="lead-score">
+                  <div class="score-box"><small>Lead score</small><strong>92</strong></div>
+                  <div class="score-box"><small>Status</small><strong>Qualified</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
 
-<!-- Contact -->
-<section class="contact" id="contact">
-  <h2>Let's Build Something Great</h2>
-  <p>Ready to transform your ideas into reality? Let's talk.</p>
-
-  <div class="contact-grid">
-    <div class="contact-item">
-      <h4>Email</h4>
-      <a href="mailto:contact@ninoventures.com">contact@ninoventures.com</a>
+        <article class="product-card">
+          <div class="product-copy">
+            <span class="label">Jangkau</span>
+            <h3>Jangkau</h3>
+            <p class="subline">AI-Powered Outreach Automation</p>
+            <p>Jangkau automates customer outreach with intelligent, template-based messaging that complies with Meta policies and converts better.</p>
+            <ul class="feature-list">
+              <li>Template-based outreach</li>
+              <li>AI-powered personalization</li>
+              <li>Lead scoring and qualification</li>
+              <li>Campaign analytics dashboard</li>
+              <li>Smart follow-up automation</li>
+            </ul>
+            <span class="button secondary" aria-disabled="true">Launch soon</span>
+          </div>
+          <div class="product-visual" aria-hidden="true">
+            <div class="dashboard-mock">
+              <div class="campaign-row"><span>Sent</span><strong>1,482</strong></div>
+              <div class="campaign-row"><span>Replies</span><strong>426</strong></div>
+              <div class="campaign-row"><span>Reply rate</span><strong>28.7%</strong></div>
+              <div class="bar-chart">
+                <span class="bar" style="height: 42%"></span>
+                <span class="bar" style="height: 58%"></span>
+                <span class="bar" style="height: 76%"></span>
+                <span class="bar" style="height: 92%"></span>
+                <span class="bar" style="height: 66%"></span>
+              </div>
+              <div class="campaign-row"><span>Top template</span><strong>Wedding Intro</strong></div>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
-    <div class="contact-item">
-      <h4>Phone</h4>
-      <a href="tel:+628197967675">+628 1979 6767 5</a>
-    </div>
-    <div class="contact-item">
-      <h4>Address</h4>
-      <span>Plaza Aminta Lantai 5/504<br>Jl. Let. Jen. TB Simatupung Kav.10<br>RT.06 RW.14, Kel. Pondok Pinang<br>Kec. Kebayoran Lama<br>Jakarta Selatan, DKI Jakarta 12310</span>
-    </div>
-    <div class="contact-item">
-      <h4>GitHub</h4>
-      <a href="https://github.com/NinoGenio" target="_blank">NinoGenio</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <div style="margin-bottom: 16px;">
-    <strong style="color: #E5E7EB;">PT Nino Genio Indonesia</strong><br>
-    NIB: 2603260080941 &nbsp;|&nbsp; NPWP: 1000.000.008.578.941
+  <section class="section about" id="about">
+    <div class="section-inner about-grid">
+      <div class="about-copy">
+        <p class="section-label">About</p>
+        <h2>A product studio based in Jakarta.</h2>
+        <p>Founded by <a href="https://www.linkedin.com/in/gentra/" target="_blank" rel="noreferrer">Gentra</a>, Nino Ventures is a technology consultancy and product studio creating software that solves real business problems.</p>
+        <p>We specialize in e-commerce, SaaS, and AI, helping startups and enterprises transform ideas into reliable, scalable digital solutions.</p>
+        <div class="signature">Gentra<br><span style="color: var(--muted); font-weight: 500;">Founder, Nino Ventures</span></div>
+      </div>
+      <div class="about-points">
+        <article class="about-point">
+          <div class="about-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16 19 5l-5 14-3-6-6 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <h3>Built in Jakarta</h3>
+          <p>We understand the local market and what matters to businesses here.</p>
+        </article>
+        <article class="about-point">
+          <div class="about-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <h3>Product mindset</h3>
+          <p>We build with users in mind and focus on long-term impact.</p>
+        </article>
+        <article class="about-point">
+          <div class="about-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 14a5 5 0 0 1 10 0v5H7v-5ZM12 10V4M9 6h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <h3>Modern stack</h3>
+          <p>Fast, secure, and scalable technologies we trust.</p>
+        </article>
+        <article class="about-point">
+          <div class="about-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6 4h12v16H6z" stroke="currentColor" stroke-width="1.7"/></svg></div>
+          <h3>Results driven</h3>
+          <p>We measure what matters and ship solutions that create value.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-card">
+      <div class="contact-copy">
+        <h2>Let's build something exceptional together.</h2>
+        <p>Have an idea, project, or challenge? We'd love to hear from you.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="mailto:contact@ninoventures.com">Start a conversation&nbsp; -></a>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <a href="mailto:contact@ninoventures.com">contact@ninoventures.com</a>
+        </div>
+        <div class="contact-item">
+          <h3>Phone</h3>
+          <a href="tel:+628197967675">+628 1979 6767 5</a>
+        </div>
+        <div class="contact-item">
+          <h3>Office</h3>
+          <span>Plaza Aminta Lantai 5/504<br>Jl. Let. Jen. TB Simatupung Kav.10<br>RT.06 RW.14, Kel. Pondok Pinang<br>Jakarta Selatan, DKI Jakarta 12310</span>
+        </div>
+        <div class="contact-item">
+          <h3>GitHub</h3>
+          <a href="https://github.com/NinoGenio" target="_blank" rel="noreferrer">NinoGenio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="brand">
+      <span class="brand-mark">N</span>
+      <span>Nino Ventures</span>
+    </div>
+    <div><strong>PT Nino Genio Indonesia</strong><br>NIB: 2603260080941 · NPWP: 1000.000.008.578.941</div>
+    <div>© 2026 PT Nino Genio Indonesia. All rights reserved.</div>
   </div>
-  <div style="margin-bottom: 16px; font-size: 13px; color: #6B7280;">
-    Plaza Aminta Lantai 5/504, Jl. Let. Jen. TB Simatupung Kav.10, RT.06 RW.14,<br>
-    Kel. Pondok Pinang, Kec. Kebayoran Lama, Jakarta Selatan, DKI Jakarta 12310<br>
-    +628 1979 6767 5 &nbsp;|&nbsp; contact@ninoventures.com
-  </div>
-  © 2026 PT Nino Genio Indonesia. All rights reserved.<br>
-  Built with &#10084;&#65039; in Jakarta
 </footer>
-
 </body>
 </html>
