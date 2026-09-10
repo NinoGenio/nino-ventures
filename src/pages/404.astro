@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { content, href } from '../i18n';
+
+// Serve the English 404 for any unmatched path (including stray /id/ URLs).
+const c = content.en.notFound;
+---
+
+<Base locale="en" path="/404" title={`404 — ${c.title}`} description="Page not found.">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>{c.title}</h1>
+      <p class="lede">{c.text}</p>
+      <div class="hero-actions">
+        <a class="btn" href={href('en', 'index')}>{c.cta}</a>
+      </div>
+    </div>
+  </section>
+</Base>

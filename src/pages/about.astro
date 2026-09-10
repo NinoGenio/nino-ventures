@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import About from '../components/views/About.astro';
+
+const title = 'About — Founder-Led AI Consultancy in Jakarta | Nino Genio';
+const description =
+  'PT Nino Genio Indonesia is a founder-led AI consultancy in Jakarta, built by engineers with 10+ years inside Indonesia\u2019s largest e-commerce platform and global product companies. Personal service, senior people.';
+---
+
+<Base locale="en" path="/about" title={title} description={description}>
+  <About locale="en" />
+</Base>

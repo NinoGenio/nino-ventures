@@ -1,0 +1,25 @@
+---
+import { content, href } from '../i18n';
+import type { Locale } from '../i18n';
+import { site, BOOKING_URL } from '../site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const band = content[locale].home.band;
+const bookHref = BOOKING_URL ?? `${href(locale, 'contact')}#book`;
+---
+
+<section class="band">
+  <div class="container">
+    <p class="eyebrow">{locale === 'en' ? 'Contact' : 'Kontak'}</p>
+    <h2>{band.title}</h2>
+    <p class="lede" style="margin-top:20px;">{band.text}</p>
+    <div class="band-actions">
+      <a class="btn paper" href={bookHref}>{band.ctaPrimary}</a>
+      <a class="btn ghost-paper" href={site.whatsapp} target="_blank" rel="noreferrer">{band.ctaWhatsapp}</a>
+    </div>
+  </div>
+</section>

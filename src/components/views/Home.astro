@@ -1,0 +1,133 @@
+---
+import { content, href } from '../../i18n';
+import type { Locale } from '../../i18n';
+import { site, BOOKING_URL } from '../../site';
+import ContactBand from '../ContactBand.astro';
+import ChatCard from '../ChatCard.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = content[locale];
+const bookHref = BOOKING_URL ?? `${href(locale, 'contact')}#book`;
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{c.home.eyebrow}</p>
+        <h1>{c.home.titleA} <em>{c.home.titleEm}</em> {c.home.titleB}</h1>
+        <p class="lede">{c.home.lede}</p>
+        <div class="hero-actions">
+          <a class="btn" href={bookHref}>{c.home.ctaPrimary}</a>
+          <a class="link" href={href(locale, 'work')}>{c.home.ctaSecondary}</a>
+        </div>
+        <ul class="proof-row" aria-label={locale === 'en' ? 'Credentials' : 'Kredensial'}>
+          {c.home.proof.map((p) => <li class="proof">{p}</li>)}
+        </ul>
+      </div>
+      <div class="hero-lines" aria-hidden="true">
+        <svg viewBox="0 90 300 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="10" y1="240" x2="290" y2="240" stroke="var(--line)" stroke-width="1"></line>
+          <path d="M25 240a125 125 0 0 1 250 0" stroke="var(--line)" stroke-width="1" opacity="0.35"></path>
+          <path d="M60 240a90 90 0 0 1 180 0" stroke="var(--line)" stroke-width="1" opacity="0.55"></path>
+          <path d="M95 240a55 55 0 0 1 110 0" stroke="var(--line)" stroke-width="1" opacity="0.75"></path>
+          <path d="M77 240a73 73 0 0 1 146 0" stroke="var(--accent)" stroke-width="1.5" opacity="0.85"></path>
+          <circle cx="150" cy="240" r="3" fill="var(--accent)"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><hr class="rule" /></div>
+
+<!-- Engagement model -->
+<section class="section">
+  <div class="container">
+    <p class="eyebrow" style="margin-bottom: 34px;">{c.home.stepsLabel}</p>
+    <div class="steps">
+      {c.home.steps.map((s, i) => (
+        <div class:list={['step', i === 0 && 'step--lead']}>
+          <span class="n">{s.n}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Services preview -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">{c.home.services.eyebrow}</p>
+        <h2>{c.home.services.title}</h2>
+      </div>
+      <p class="side">
+        <a class="link" href={href(locale, 'services')}>{c.home.services.link}</a>
+      </p>
+    </div>
+    <div class="pillars">
+      {c.services.pillars.map((p) => (
+        <article class="pillar">
+          <span class="n">{p.n}</span>
+          <h3>{p.title}</h3>
+          <p>{p.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Work preview -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">{c.home.work.eyebrow}</p>
+        <h2>{c.home.work.title}</h2>
+      </div>
+      <p class="side">
+        <a class="link" href={href(locale, 'work')}>{c.home.work.link}</a>
+      </p>
+    </div>
+    <div class="flagship">
+      <div>
+        <span class="label">{c.work.flagship.label}</span>
+        <h3>{c.work.flagship.name}</h3>
+        <p class="tagline">{c.work.flagship.tagline}</p>
+        <p class="text">{c.work.flagship.text}</p>
+        <ul class="edit-list">
+          {c.work.flagship.features.map((f) => <li>{f}</li>)}
+        </ul>
+        <a class="link" href={site.hainaya} target="_blank" rel="noreferrer">{c.work.flagship.cta}</a>
+      </div>
+      <ChatCard locale={locale} />
+    </div>
+  </div>
+</section>
+
+<!-- About teaser -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div>
+        <p class="eyebrow">{c.home.about.eyebrow}</p>
+        <h2>{c.home.about.title}</h2>
+        <p style="margin-top:22px;">
+          <a class="link" href={href(locale, 'about')}>{c.home.about.link}</a>
+        </p>
+      </div>
+      <p class="lede">{c.home.about.text}</p>
+    </div>
+  </div>
+</section>
+
+<ContactBand locale={locale} />

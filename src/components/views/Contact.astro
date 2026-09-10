@@ -1,0 +1,85 @@
+---
+import { content, href } from '../../i18n';
+import type { Locale } from '../../i18n';
+import { site, BOOKING_URL } from '../../site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = content[locale].contact;
+const ch = c.channels;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: locale === 'en' ? 'Home' : 'Beranda', item: `${site.url}${href(locale, 'index')}` },
+    { '@type': 'ListItem', position: 2, name: c.eyebrow, item: `${site.url}${href(locale, 'contact')}` },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h1>{c.title}</h1>
+    <p class="lede">{c.lede}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="channels">
+      <div class="channel">
+        <h3>{ch.whatsapp.title}</h3>
+        <p>{ch.whatsapp.text}</p>
+        <div class="actions">
+          <a class="btn" href={site.whatsapp} target="_blank" rel="noreferrer">{ch.whatsapp.action}</a>
+        </div>
+      </div>
+
+      <div class="channel" id="book">
+        <h3>{ch.booking.title}</h3>
+        <p>{ch.booking.text}</p>
+        {BOOKING_URL ? (
+          <div class="actions">
+            <a class="btn outline" href={BOOKING_URL} target="_blank" rel="noreferrer">{ch.booking.action}</a>
+          </div>
+        ) : (
+          <div class="actions">
+            <a class="btn outline" href={site.whatsapp} target="_blank" rel="noreferrer">{locale === 'en' ? 'Arrange via WhatsApp' : 'Atur via WhatsApp'}</a>
+            <a class="link" style="align-self:center;" href={`mailto:${site.email}`}>{site.email}</a>
+          </div>
+        )}
+      </div>
+
+      <div class="channel">
+        <h3>{ch.email.title}</h3>
+        <a class="big" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+
+      <div class="channel">
+        <h3>{ch.phone.title}</h3>
+        <a class="big" href={site.phoneHref}>{site.phoneDisplay}</a>
+      </div>
+
+      <div class="channel">
+        <h3>{ch.office.title}</h3>
+        <address style="white-space: pre-line;">{site.office}</address>
+      </div>
+
+      <div class="channel">
+        <h3>{ch.github.title}</h3>
+        <a class="big" href={site.github} target="_blank" rel="noreferrer">NinoGenio</a>
+      </div>
+    </div>
+
+    <p class="legal-note">
+      {c.legalLabel}: {site.legal} · {site.legalDetail} — {c.note}
+    </p>
+  </div>
+</section>

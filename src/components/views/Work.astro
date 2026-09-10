@@ -1,0 +1,83 @@
+---
+import { content, href } from '../../i18n';
+import type { Locale } from '../../i18n';
+import { site } from '../../site';
+import ContactBand from '../ContactBand.astro';
+import ChatCard from '../ChatCard.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = content[locale].work;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: locale === 'en' ? 'Home' : 'Beranda', item: `${site.url}${href(locale, 'index')}` },
+    { '@type': 'ListItem', position: 2, name: c.eyebrow, item: `${site.url}${href(locale, 'work')}` },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h1>{c.title}</h1>
+    <p class="lede">{c.lede}</p>
+  </div>
+</section>
+
+<!-- Flagship -->
+<section class="section">
+  <div class="container">
+    <div class="flagship">
+      <div>
+        <span class="label">{c.flagship.label}</span>
+        <h3>{c.flagship.name}</h3>
+        <p class="tagline">{c.flagship.tagline}</p>
+        <p class="text">{c.flagship.text}</p>
+        <ul class="edit-list">
+          {c.flagship.features.map((f) => <li>{f}</li>)}
+        </ul>
+        <a class="link" href={site.hainaya} target="_blank" rel="noreferrer">{c.flagship.cta}</a>
+      </div>
+      <ChatCard locale={locale} />
+    </div>
+  </div>
+</section>
+
+<!-- Labs -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">{c.labs.eyebrow}</p>
+        <h2>{c.labs.title}</h2>
+      </div>
+      <p class="side">{c.labs.intro}</p>
+    </div>
+    <div class="labs-grid">
+      {c.labs.items.map((lab) => (
+        <article class="lab">
+          <span class="status">{lab.status}</span>
+          <h3>{lab.name}</h3>
+          <p>{lab.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Confidentiality note -->
+<section class="section">
+  <div class="container">
+    <p class="note"><strong>{c.note.title}</strong> {c.note.text}</p>
+  </div>
+</section>
+
+<ContactBand locale={locale} />

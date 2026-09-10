@@ -1,0 +1,97 @@
+---
+import { content, href } from '../../i18n';
+import type { Locale } from '../../i18n';
+import { site } from '../../site';
+import ContactBand from '../ContactBand.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = content[locale].about;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: locale === 'en' ? 'Home' : 'Beranda', item: `${site.url}${href(locale, 'index')}` },
+    { '@type': 'ListItem', position: 2, name: c.eyebrow, item: `${site.url}${href(locale, 'about')}` },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h1>{c.title}</h1>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="prose">
+        <p>{c.p1}</p>
+        <p>{c.p2}</p>
+      </div>
+      <div>
+        <div class="founder">
+          <span class="name">{c.founder.name}</span>
+          <span class="role">{c.founder.role}</span>
+        </div>
+        <p class="lede" style="margin-top:14px;">{c.founder.text}</p>
+        <p style="margin-top:14px;">
+          <a class="link" href={site.linkedin} target="_blank" rel="noreferrer">{c.founder.link}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="facts">
+    {c.facts.map((f) => <span>{f}</span>)}
+  </div>
+</div>
+
+<!-- AI-native -->
+<section class="section">
+  <div class="container">
+    <div
+      style="background: var(--paper-soft); border: 1px solid var(--line-soft); border-radius: 20px; padding: clamp(28px, 4vw, 52px);"
+    >
+      <p class="eyebrow">{c.credibility.eyebrow}</p>
+      <h2>{c.credibility.title}</h2>
+      <div class="cred-grid">
+        {c.credibility.items.map((item) => (
+          <div class="value">
+            <span class="n">{item.n}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section">
+  <div class="container">
+    <div class="values-grid">
+      {c.values.map((v) => (
+        <div class="value">
+          <span class="n">{v.n}</span>
+          <h3>{v.title}</h3>
+          <p>{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<ContactBand locale={locale} />

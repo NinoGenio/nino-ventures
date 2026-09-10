@@ -1,0 +1,36 @@
+---
+import { content, href } from '../i18n';
+import type { Locale } from '../i18n';
+import { site } from '../site';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const c = content[locale];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href={href(locale, 'index')}>
+          <span class="brand-mark"><img src="/nino-genio-icon.svg" alt="" width="30" height="30" /></span>
+          <span>Nino Genio</span>
+        </a>
+        <p style="margin-top:10px;">{c.footer.tagline}</p>
+      </div>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href={href(locale, 'services')}>{c.nav.services}</a>
+        <a href={href(locale, 'work')}>{c.nav.work}</a>
+        <a href={href(locale, 'about')}>{c.nav.about}</a>
+        <a href={href(locale, 'contact')}>{c.nav.contact}</a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <span>{c.footer.rights}</span>
+      <span>{site.legalDetail}</span>
+    </div>
+  </div>
+</footer>
